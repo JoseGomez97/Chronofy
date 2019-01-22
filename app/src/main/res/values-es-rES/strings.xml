@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Chronofy</string>
+    <string name="title_activity_main">ActividadPrincipal</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="nav_header_desc">Cabecera de navegación</string>
+    <string name="image_of_the_actual_brick">Imagen del brick actual</string>
+    <string name="navigation_drawer_open">Abrir menú de navegación</string>
+    <string name="navigation_drawer_close">Cerrar menú de navegación</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+</resources>
