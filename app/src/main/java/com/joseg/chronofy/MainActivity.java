@@ -8,6 +8,8 @@ import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
+import com.joseg.chronofy.CustomAdapter.BrickAdapter;
+import com.joseg.chronofy.DataModel.BrickModel;
 
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -17,9 +19,17 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    ArrayList<BrickModel> bricks;
+    ListView listView;
+    private static BrickAdapter brickAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +42,37 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Creamos la main_list_view de bricks
+        listView = findViewById(R.id.main_list_view);
+        bricks = new ArrayList<>();
+        bricks.add(new BrickModel("Estudiar", "Ahora ponte a estudiar", 0));
+
+        brickAdapter = new BrickAdapter(bricks, getApplicationContext());
+
+        listView.setAdapter(brickAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                BrickModel brickModel = bricks.get(position);
+
+                Snackbar.make(view, brickModel.getName(), Snackbar.LENGTH_LONG).setAction("No action", null).show();
+            }
+        });
+
         // El activity_main tiene un botón flotante (fab)
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                bricks.add(new BrickModel("Estudiar", "Ahora ponte a estudiar", 0));
+                brickAdapter.notifyDataSetChanged();
+                Snackbar.make(view, "Añadido nuevo elemento", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
 
-        // El activity_main tiene un DrawerLayout, que contiene el resto de objetos
+        // El activity_main tiene un DrawerLayout, sobre el cual se crea el menú lateral
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         // En la toolbar se pone el acceso al menú lateral que ocupará lo que ocupa el drawer
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

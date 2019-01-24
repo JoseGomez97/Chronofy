@@ -4,8 +4,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/background_light"
     android:minHeight="72dp">
+
+    <!-- Añadir como argumento del RelativeLayout para que
+         los bricks sean blancos:
+    android:background="@android:color/background_light" -->
 
     <ImageView
         android:id="@+id/imagen_brick"
@@ -46,7 +49,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"
             android:text="10 min y 5 seg restantes"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -56,7 +60,6 @@
         android:layout_height="52dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:contentDescription="@string/brick_options"
         android:padding="12dp"

@@ -32,7 +32,6 @@ public class BrickAdapter extends ArrayAdapter<BrickModel> implements View.OnCli
     private static class ViewHolder {
         TextView tituloBrick;
         TextView descripcionBrick;
-        ImageView imagenBrick;
         ImageView imagenOpcionesBrick;
     }
 
@@ -70,6 +69,7 @@ public class BrickAdapter extends ArrayAdapter<BrickModel> implements View.OnCli
                                 return true;
                             case R.id.eliminar_brick:
                                 dataSet.remove(position);
+                                notifyDataSetChanged();
                                 Toast.makeText(getContext(), "Elemento " + position + " eliminado",
                                         Toast.LENGTH_SHORT).show();
                                 return true;
@@ -107,7 +107,7 @@ public class BrickAdapter extends ArrayAdapter<BrickModel> implements View.OnCli
             convertView = inflater.inflate(R.layout.brick_view, parent, false);
             viewHolder.tituloBrick = convertView.findViewById(R.id.titulo_brick);
             viewHolder.descripcionBrick = convertView.findViewById(R.id.descripcion_brick);
-            viewHolder.imagenBrick = convertView.findViewById(R.id.imagen_brick);
+            viewHolder.imagenOpcionesBrick = convertView.findViewById(R.id.imagen_opciones_brick);
 
             result=convertView;
 
@@ -117,8 +117,9 @@ public class BrickAdapter extends ArrayAdapter<BrickModel> implements View.OnCli
             result=convertView;
         }
 
-        Animation animation = AnimationUtils.loadAnimation(mContext, (position > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
-        result.startAnimation(animation);
+
+        //Animation animation = AnimationUtils.loadAnimation(mContext, (position > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
+        //result.startAnimation(animation);
         lastPosition = position;
 
         viewHolder.tituloBrick.setText(brickModel.getName());
@@ -126,6 +127,6 @@ public class BrickAdapter extends ArrayAdapter<BrickModel> implements View.OnCli
         viewHolder.imagenOpcionesBrick.setOnClickListener(this);
         viewHolder.imagenOpcionesBrick.setTag(position);
         // Return the completed view to render on screen
-        return convertView;
+        return result;
     }
 }

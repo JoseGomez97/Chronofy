@@ -9,9 +9,9 @@ public class BrickModel {
     // TODO Hará falta añadir una variable que indique si es un brick bucle o tiempo, y las variables de ambos
     // De momento solo tiene un String y un int de prueba
 
-    private String name;
-    private String description;
-    private int type;
+    String name;
+    String description;
+    int type;
 
     public BrickModel(String name, String description, int type) {
         this.name = name;
