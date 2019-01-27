@@ -50,15 +50,6 @@ public class MainActivity extends AppCompatActivity
         brickAdapter = new BrickAdapter(bricks, getApplicationContext());
 
         listView.setAdapter(brickAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                BrickModel brickModel = bricks.get(position);
-
-                Snackbar.make(view, brickModel.getName(), Snackbar.LENGTH_LONG).setAction("No action", null).show();
-            }
-        });
 
         // El activity_main tiene un botón flotante (fab)
         FloatingActionButton fab = findViewById(R.id.fab);

@@ -2,9 +2,14 @@
 <!--Apariencia de los bricks en el BrickList-->
 <!-- TODO Aplicar efectos-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/brick"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="72dp">
+    android:minHeight="72dp"
+    android:background="?android:selectableItemBackground">
+
+    <tag
+        android:id="@id/pos"/>
 
     <!-- Añadir como argumento del RelativeLayout para que
          los bricks sean blancos:
@@ -28,18 +33,18 @@
         android:layout_alignWithParentIfMissing="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="16dp"
-        android:layout_toStartOf="@+id/imagen_opciones_brick"
+        android:layout_toStartOf="@+id/opciones_brick"
         android:layout_toEndOf="@+id/imagen_brick"
         android:orientation="vertical"
-        android:paddingBottom="16dp"
-        android:paddingTop="16dp">
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
 
         <TextView
             android:id="@+id/titulo_brick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:text="Tiempo de descanso"
+            android:text=""
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="18sp" />
 
@@ -48,14 +53,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"
-            android:text="10 min y 5 seg restantes"
+            android:text=""
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="14sp" />
 
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imagen_opciones_brick"
+        android:id="@+id/opciones_brick"
         android:layout_width="52dp"
         android:layout_height="52dp"
         android:layout_alignParentEnd="true"
@@ -63,6 +68,6 @@
         android:clickable="true"
         android:contentDescription="@string/brick_options"
         android:padding="12dp"
-        android:src="@drawable/ic_more_vert_black_24dp" />
+        android:src="@drawable/ic_more_vert_black_24dp"/>
 
 </RelativeLayout>
